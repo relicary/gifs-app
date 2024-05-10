@@ -40,3 +40,13 @@ UPDATE src/app/shared/shared.module.ts (304 bytes)
 
 De este modo se genera el componente Sidebar dentro del módulo `shared`
 
+Otro ejemplo es: 
+
+```bash
+$> ng g component gifs/pages/home-page
+CREATE src/app/gifs/pages/home-page/home-page.component.html (25 bytes)
+CREATE src/app/gifs/pages/home-page/home-page.component.spec.ts (639 bytes)
+CREATE src/app/gifs/pages/home-page/home-page.component.ts (220 bytes)
+CREATE src/app/gifs/pages/home-page/home-page.component.css (0 bytes)
+UPDATE src/app/gifs/gifs.module.ts (384 bytes)
+```
