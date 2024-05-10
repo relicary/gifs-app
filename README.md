@@ -23,6 +23,8 @@ Como se ha indicado en el punto anterior, se van a definir módulos funcionales 
 ```bash
 $> ng g m gifs
 CREATE src/app/gifs/gifs.module.ts (202 bytes)
+$> ng generate module shared
+CREATE src/app/shared/shared.module.ts (204 bytes)
 ```
-
+El resto del proceso puede verse en el histórico del proyecto.
 
