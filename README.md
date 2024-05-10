@@ -26,5 +26,17 @@ CREATE src/app/gifs/gifs.module.ts (202 bytes)
 $> ng generate module shared
 CREATE src/app/shared/shared.module.ts (204 bytes)
 ```
-El resto del proceso puede verse en el histórico del proyecto.
+
+¿Cómo crear componentes? Desde el directorio `app`
+
+```bash
+$> ng g component shared/components/sidebar
+CREATE src/app/shared/components/sidebar/sidebar.component.html (23 bytes)
+CREATE src/app/shared/components/sidebar/sidebar.component.spec.ts (631 bytes)
+CREATE src/app/shared/components/sidebar/sidebar.component.ts (213 bytes)
+CREATE src/app/shared/components/sidebar/sidebar.component.css (0 bytes)
+UPDATE src/app/shared/shared.module.ts (304 bytes)
+```
+
+De este modo se genera el componente Sidebar dentro del módulo `shared`
 
