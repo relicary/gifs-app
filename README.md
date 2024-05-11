@@ -103,6 +103,10 @@ export class GifsService {
 
   constructor() { }
 
+  get tagsHistory(): string[] {
+    return [...this._tagsHistory];
+  }
+
   public searchTag(tag: string) : void {
     this._tagsHistory.unshift(tag);
   }
@@ -126,3 +130,25 @@ export class SearchBoxComponent {
 ```
 
 > **NOTA:** el método `unshift` es un método `js` que añade elemento a un array.
+> **NOTA:** el operador `...` se conoce como **de propagación**. Básicamente copia el contenido de una variable en otra nueva, en lugar de devolver la variable por referencia.
+
+**¿Y cómo llamar al contenido de ese servicio?** El componente que lo necesite, debe declarar el servicio en su constructor.
+
+```typescript
+export class SidebarComponent {
+  constructor(private gifsService: GifsService) {};
+}
+```
+
+De este modo, ya puede hacer uso de él:
+
+```typescript
+export class SidebarComponent {
+
+  constructor(private gifsService: GifsService) {};
+
+  get tags(): string[] {
+    return this.gifsService.tagsHistory;
+  }
+}  
+```
