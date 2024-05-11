@@ -81,3 +81,74 @@ export class SearchBoxComponent {
 ```
 
 Es importante ver cómo el `TS` y el `HTML` son interdependientes.
+
+# Services
+
+Como se explicó en el curso anterior, los **services** permiten la gestión de datos. En este caso, se crean a nivel de módulo y su estructura básica es sencilla:
+
+```typescript
+@Injectable({providedIn: 'root'})
+export class GifsService {
+  constructor() { }
+}
+```
+
+Tras esto, se puede establecer un flujo que lleve el valor de un elemento `HTML` (un `imput` por ejemplo), hasta un array que exista en el `Service`.
+
+```typescript
+@Injectable({providedIn: 'root'})
+export class GifsService {
+
+  private _tagsHistory: string[] = [];
+
+  constructor() { }
+
+  get tagsHistory(): string[] {
+    return [...this._tagsHistory];
+  }
+
+  public searchTag(tag: string) : void {
+    this._tagsHistory.unshift(tag);
+  }
+}
+```
+
+```typescript
+export class SearchBoxComponent {
+
+  @ViewChild('txtTagInput')
+  public tagInput!: ElementRef<HTMLInputElement>;
+
+  constructor( private gifsService: GifsService) { }
+
+  searchTag () {
+    const newTag = this.tagInput.nativeElement.value;
+    this.gifsService.searchTag(newTag);
+  }
+
+}
+```
+
+> **NOTA:** el método `unshift` es un método `js` que añade elemento a un array.
+> **NOTA:** el operador `...` se conoce como **de propagación**. Básicamente copia el contenido de una variable en otra nueva, en lugar de devolver la variable por referencia.
+
+**¿Y cómo llamar al contenido de ese servicio?** El componente que lo necesite, debe declarar el servicio en su constructor.
+
+```typescript
+export class SidebarComponent {
+  constructor(private gifsService: GifsService) {};
+}
+```
+
+De este modo, ya puede hacer uso de él:
+
+```typescript
+export class SidebarComponent {
+
+  constructor(private gifsService: GifsService) {};
+
+  get tags(): string[] {
+    return this.gifsService.tagsHistory;
+  }
+}  
+```
