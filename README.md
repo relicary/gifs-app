@@ -81,3 +81,14 @@ export class SearchBoxComponent {
 ```
 
 Es importante ver cómo el `TS` y el `HTML` son interdependientes.
+
+# Services
+
+Como se explicó en el curso anterior, los **services** permiten la gestión de datos. En este caso, se crean a nivel de módulo y su estructura básica es sencilla:
+
+```typescript
+@Injectable({providedIn: 'root'})
+export class GifsService {
+  constructor() { }
+}
+```
