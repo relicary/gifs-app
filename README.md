@@ -50,3 +50,34 @@ CREATE src/app/gifs/pages/home-page/home-page.component.ts (220 bytes)
 CREATE src/app/gifs/pages/home-page/home-page.component.css (0 bytes)
 UPDATE src/app/gifs/gifs.module.ts (384 bytes)
 ```
+
+# Decorador View Child
+
+Este decorador permite recoger elementos HTML del componente.
+
+Por ejemplo: dado un `input` identificado como `txtTagInput`, se desea recoger su `value` e imprimirlo por consola cuando se pulse `Enter`. El decorador `@ViewChild` permite recuperar en el `TS` el elemento `HTML`
+
+```typescript
+export class SearchBoxComponent {
+
+  @ViewChild('txtTagInput')
+  public tagInput!: ElementRef<HTMLInputElement>;
+
+  searchTag () {
+    const newTag = this.tagInput.nativeElement.value;
+    console.log({ newTag });
+  }
+
+}
+```
+
+```html
+<input type="text"
+  class="form-control"
+  placeholder="Buscar gifs..."
+  (keyup.enter)="searchTag()"
+  #txtTagInput
+>	
+```
+
+Es importante ver cómo el `TS` y el `HTML` son interdependientes.
