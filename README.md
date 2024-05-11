@@ -92,3 +92,37 @@ export class GifsService {
   constructor() { }
 }
 ```
+
+Tras esto, se puede establecer un flujo que lleve el valor de un elemento `HTML` (un `imput` por ejemplo), hasta un array que exista en el `Service`.
+
+```typescript
+@Injectable({providedIn: 'root'})
+export class GifsService {
+
+  private _tagsHistory: string[] = [];
+
+  constructor() { }
+
+  public searchTag(tag: string) : void {
+    this._tagsHistory.unshift(tag);
+  }
+}
+```
+
+```typescript
+export class SearchBoxComponent {
+
+  @ViewChild('txtTagInput')
+  public tagInput!: ElementRef<HTMLInputElement>;
+
+  constructor( private gifsService: GifsService) { }
+
+  searchTag () {
+    const newTag = this.tagInput.nativeElement.value;
+    this.gifsService.searchTag(newTag);
+  }
+
+}
+```
+
+> **NOTA:** el método `unshift` es un método `js` que añade elemento a un array.
