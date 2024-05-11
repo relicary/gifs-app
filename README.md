@@ -152,3 +152,7 @@ export class SidebarComponent {
   }
 }  
 ```
+
+# Resources
+
+* (QuickType)[https://app.quicktype.io/]: Given a JSON, generate the TS interface.
