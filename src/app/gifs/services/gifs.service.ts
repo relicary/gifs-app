@@ -1,9 +1,11 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { SearchResponse } from "../interfaces/gifs.interfaces";
+import { Gif, SearchResponse } from "../interfaces/gifs.interfaces";
 
 @Injectable({providedIn: 'root'})
 export class GifsService {
+
+  public gifList: Gif[] = [];
 
   private _tagsHistory: string[] = [];
 
@@ -48,7 +50,7 @@ export class GifsService {
       )
       .subscribe(
         resp => {
-          console.log(resp);
+          this.gifList = resp.data;
         }
       );
   }
