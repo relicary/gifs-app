@@ -50,3 +50,6 @@ CREATE src/app/gifs/pages/home-page/home-page.component.ts (220 bytes)
 CREATE src/app/gifs/pages/home-page/home-page.component.css (0 bytes)
 UPDATE src/app/gifs/gifs.module.ts (384 bytes)
 ```
+
+# Decorador View Child
+
